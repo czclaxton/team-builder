@@ -4,9 +4,7 @@ import List from "./List";
 export default function Form(props) {
   const [user, setUser] = useState({ name: "", email: "", role: "" });
 
-  const [teamArray, setTeamArray] = useState([]);
-
-  // const [member, setMember] = useState(null)
+  const [members, setMembers] = useState([]);
 
   function handleChange(event) {
     const updatedUser = { ...user, [event.target.name]: event.target.value };
@@ -16,10 +14,8 @@ export default function Form(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    return setTeamArray([...teamArray, user]);
+    return setMembers([...members, user]);
   }
-
-  // const teamArray = [{ name: "Connor", email: "email@email.com", role: "FE" }];
 
   return (
     <div>
@@ -74,11 +70,7 @@ export default function Form(props) {
         </fieldset>
       </form>
       <div className="list-div">
-        <List
-          teamArray={teamArray}
-          setTeamArray={setTeamArray}
-          key={parseInt(Math.random() * 1000000000)}
-        />
+        <List members={members} setMembers={setMembers} />
       </div>
     </div>
   );
